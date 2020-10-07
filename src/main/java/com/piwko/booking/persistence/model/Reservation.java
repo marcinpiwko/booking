@@ -19,15 +19,15 @@ public class Reservation {
     @Column(name = "RES_DATE", nullable = false)
     private Date reservationDate;
 
-    @OneToOne()
+    @OneToOne
     @JoinColumn(referencedColumnName = "LOC_ID", name = "RES_LOC_ID", nullable = false)
     private Location location;
 
-    @OneToOne()
+    @OneToOne
     @JoinColumn(referencedColumnName = "USR_ID", name = "RES_USR_ID", nullable = false)
     private User user;
 
-    @OneToOne()
+    @OneToOne
     @JoinColumn(referencedColumnName = "SRV_ID", name = "RES_SRV_ID", nullable = false)
     private Service service;
 

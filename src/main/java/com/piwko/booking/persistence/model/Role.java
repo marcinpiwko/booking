@@ -24,7 +24,7 @@ public class Role {
     @Enumerated(EnumType.STRING)
     private RoleType type;
 
-    public String getCode() {
+    public String getName() {
         return type.name();
     }
 }

@@ -23,9 +23,8 @@ public class Company {
     @Column(name = "CMP_NAME", nullable = false)
     private String name;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(referencedColumnName = "SPC_ID", name = "CMP_SPC_ID", nullable = false)
-    private Specialization specialization;
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Specialization> specializations;
 
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
     private List<Location> locations;

@@ -25,6 +25,6 @@ public class Employee {
     @JoinColumn(referencedColumnName = "LOC_ID", name = "EMP_LOC_ID", nullable = false)
     private Location location;
 
-    @OneToMany
+    @ManyToMany
     private List<Service> services;
 }

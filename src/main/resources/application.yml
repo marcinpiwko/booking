@@ -2,6 +2,22 @@ server:
   port: 8900
   servlet:
     context-path: /api
+booking:
+  cache:
+    maxTimeToLive: 100
+    maxTimeToIdle: 100
+    memoryStorePolicy: LRU
+    maxEntries: 100
+    eternal: false
+  page:
+    number: 0
+    size: 10
+    sortBy: name
+logging:
+  file:
+    name: logs/application.log
+    max-history: 10
+    max-size: 100MB
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver

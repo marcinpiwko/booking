@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Table(name = "SERVICES")
 @Data
 public class Service {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "SRV_ID", nullable = false)
@@ -21,10 +22,6 @@ public class Service {
 
     @Column(name = "SRV_DESCRIPTION")
     private String description;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(referencedColumnName = "LOC_ID", name = "SRV_LOC_ID", nullable = false)
-    private Location location;
 
     @Column(name = "SRV_PRICE")
     private Double price;

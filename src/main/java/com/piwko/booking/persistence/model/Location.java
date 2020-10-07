@@ -20,11 +20,11 @@ public class Location {
     @Column(name = "LOC_NAME", nullable = false)
     private String name;
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(referencedColumnName = "CMP_ID", name = "LOC_CMP_ID", nullable = false)
     private Company company;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(referencedColumnName = "ADR_ID", name = "LOC_ADR_ID", nullable = false)
     private Address address;
 

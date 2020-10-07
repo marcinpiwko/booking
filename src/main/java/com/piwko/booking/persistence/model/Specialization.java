@@ -3,7 +3,6 @@ package com.piwko.booking.persistence.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "SPECIALIZATIONS")
@@ -20,7 +19,4 @@ public class Specialization {
 
     @Column(name = "SPC_CODE", nullable = false)
     private String code;
-
-    @OneToMany(mappedBy = "parentSpecialization", cascade = CascadeType.ALL)
-    private List<SubSpecialization> subSpecializations;
 }

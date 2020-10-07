@@ -1,0 +1,47 @@
+{
+  "properties": [
+    {
+      "name": "booking.page.number",
+      "type": "java.lang.String",
+      "description": "Page number.",
+      "defaultValue": "0"
+    },
+    {
+      "name": "booking.page.sortBy",
+      "type": "java.lang.String",
+      "description": "Sorting attribute.",
+      "defaultValue": "name"
+    },
+    {
+      "name": "booking.page.size",
+      "type": "java.lang.String",
+      "description": "Page size.",
+      "defaultValue": "10"
+    },
+    {
+      "name": "booking.cache.maxEntries",
+      "type": "java.lang.String",
+      "description": "Sets the maximum objects to be held in local cache (0 = no limit).",
+      "defaultValue": "100"
+    },
+    {
+      "name": "booking.cache.memoryStorePolicy",
+      "type": "java.lang.String",
+      "description": "Sets the eviction policy (LRU, LFU or FIFO). An invalid argument will set it to LRU."
+    },
+    {
+      "name": "booking.cache.maxTimeToIdle",
+      "type": "java.lang.String",
+      "description": "The maximum number of seconds an element can exist in the cache without being accessed (0 = no limit)."
+    },
+    {
+      "name": "booking.cache.maxTimeToLive",
+      "type": "java.lang.String",
+      "description": "The maximum number of seconds an element can exist in the cache regardless of use (0 = no limit)."
+    },
+    {
+      "name": "booking.cache.eternal",
+      "type": "java.lang.String",
+      "description": "If the cache’s eternal flag is set, it overrides any finite TTI/TTL values that have been set."
+    }
+  ] }

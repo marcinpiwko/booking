@@ -5,9 +5,7 @@ import java.util.regex.Matcher;
 
 public class StringUtil {
 
-    private StringUtil() {
-
-    }
+    private StringUtil() {}
 
     public static String replace(String pMessage, Object[] pParams) {
         if (pParams != null && pMessage != null) {
@@ -16,6 +14,10 @@ public class StringUtil {
             }
         }
         return pMessage;
+    }
+
+    public static String capitalize(String string) {
+        return !isEmpty(string) ? string.substring(0, 1).toUpperCase() + string.substring(1) : "";
     }
 
     public static String getRandomString() {

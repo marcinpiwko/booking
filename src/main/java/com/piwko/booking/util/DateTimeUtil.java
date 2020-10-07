@@ -5,9 +5,7 @@ import java.util.Date;
 
 public class DateTimeUtil {
 
-    private DateTimeUtil() {
-
-    }
+    private DateTimeUtil() {}
 
     public static Date getCurrentDate() {
         return new Date(System.currentTimeMillis());
