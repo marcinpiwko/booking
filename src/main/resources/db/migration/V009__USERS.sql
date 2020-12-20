@@ -1,0 +1,39 @@
+CREATE TABLE USERS(
+                          USR_ID INT PRIMARY KEY NOT NULL,
+                          USR_EMAIL VARCHAR(30) NOT NULL,
+                          USR_PASSWORD VARCHAR(255) NOT NULL,
+                          USR_FIRST_NAME VARCHAR(50) NOT NULL,
+                          USR_LAST_NAME VARCHAR(50) NOT NULL,
+                          USR_BIRTH_DATE DATE,
+                          USR_GENDER VARCHAR(1),
+                          USR_PHONE_NUMBER VARCHAR(9),
+                          USR_REGISTRATION_DATE TIMESTAMP DEFAULT now() NOT NULL,
+                          USR_MODIFICATION_DATE TIMESTAMP,
+                          USR_CMP_ID INT REFERENCES COMPANIES (CMP_ID),
+                          USR_ROL_ID INT REFERENCES ROLES (ROL_ID) NOT NULL,
+                          USR_ENABLED BOOLEAN DEFAULT TRUE NOT NULL,
+                          USR_REMOVED BOOLEAN DEFAULT FALSE NOT NULL,
+                          CONSTRAINT USR_EMAIL_UNIQUE UNIQUE (USR_EMAIL)
+);
+
+COMMENT ON COLUMN USERS.USR_ID IS 'User ID (primary key)';
+COMMENT ON COLUMN USERS.USR_EMAIL IS 'User email (username)';
+COMMENT ON COLUMN USERS.USR_PASSWORD IS 'User password';
+COMMENT ON COLUMN USERS.USR_FIRST_NAME IS 'User first name';
+COMMENT ON COLUMN USERS.USR_LAST_NAME IS 'User last name';
+COMMENT ON COLUMN USERS.USR_BIRTH_DATE IS 'User birth date';
+COMMENT ON COLUMN USERS.USR_GENDER IS 'User gender';
+COMMENT ON COLUMN USERS.USR_PHONE_NUMBER IS 'User phone number';
+COMMENT ON COLUMN USERS.USR_REGISTRATION_DATE IS 'User registration date';
+COMMENT ON COLUMN USERS.USR_MODIFICATION_DATE IS 'User modification date';
+COMMENT ON COLUMN USERS.USR_CMP_ID IS 'User associated company (foreign key)';
+COMMENT ON COLUMN USERS.USR_ROL_ID IS 'User role (foreign key)';
+COMMENT ON COLUMN USERS.USR_ENABLED IS 'User enabled';
+COMMENT ON COLUMN USERS.USR_REMOVED IS 'User soft delete';
+
+CREATE SEQUENCE USR_SEQ
+    START WITH 1
+    INCREMENT BY 50
+    MINVALUE 1
+    MAXVALUE 100000000
+    CYCLE;

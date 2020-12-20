@@ -1,11 +1,11 @@
 package com.piwko.booking.api.form.get;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class GetAddressForm {
-
-    private Long id;
 
     private String street;
 

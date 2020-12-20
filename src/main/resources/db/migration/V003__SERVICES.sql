@@ -1,0 +1,30 @@
+CREATE TABLE SERVICES(
+                          SRV_ID INT PRIMARY KEY NOT NULL,
+                          SRV_CODE VARCHAR(10) NOT NULL,
+                          SRV_NAME VARCHAR(50) NOT NULL,
+                          SRV_DESCRIPTION VARCHAR(255),
+                          SRV_PRICE FLOAT,
+                          SRV_AVAILABLE BOOLEAN DEFAULT TRUE NOT NULL,
+                          SRV_DURATION INT,
+                          SRV_CMP_ID INT REFERENCES COMPANIES (CMP_ID) NOT NULL,
+                          SRV_REMOVED BOOLEAN DEFAULT FALSE NOT NULL,
+                          CONSTRAINT SRV_CODE_UNIQUE UNIQUE (SRV_CODE),
+                          CONSTRAINT SRV_NAME_UNIQUE UNIQUE (SRV_NAME)
+);
+
+COMMENT ON COLUMN SERVICES.SRV_ID IS 'Service ID (primary key)';
+COMMENT ON COLUMN SERVICES.SRV_CODE IS 'Service business code (unique)';
+COMMENT ON COLUMN SERVICES.SRV_NAME IS 'Service name (unique)';
+COMMENT ON COLUMN SERVICES.SRV_DESCRIPTION IS 'Service description';
+COMMENT ON COLUMN SERVICES.SRV_PRICE IS 'Service price';
+COMMENT ON COLUMN SERVICES.SRV_AVAILABLE IS 'Service currently available';
+COMMENT ON COLUMN SERVICES.SRV_DURATION IS 'Service duration (in minutes)';
+COMMENT ON COLUMN SERVICES.SRV_CMP_ID IS 'Service company';
+COMMENT ON COLUMN SERVICES.SRV_REMOVED IS 'Service soft delete';
+
+CREATE SEQUENCE SRV_SEQ
+    START WITH 1
+    INCREMENT BY 50
+    MINVALUE 1
+    MAXVALUE 100000000
+    CYCLE;

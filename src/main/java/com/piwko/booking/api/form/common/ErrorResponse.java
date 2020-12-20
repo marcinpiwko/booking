@@ -1,19 +1,27 @@
 package com.piwko.booking.api.form.common;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.*;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
-@NoArgsConstructor
 public class ErrorResponse {
 
-    private Date timestamp;
+    @Schema(description = "error date")
+    private LocalDateTime timestamp;
 
+    @Schema(description = "http error status")
+    private int status;
+
+    @Schema(description = "http error code")
+    private String error;
+
+    @Schema(description = "error message")
     private String message;
 
-    private String details;
+    @Schema(description = "requested endpoint")
+    private String path;
 }

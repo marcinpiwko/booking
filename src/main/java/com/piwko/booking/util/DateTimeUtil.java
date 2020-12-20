@@ -1,42 +1,26 @@
 package com.piwko.booking.util;
 
-import java.util.Calendar;
-import java.util.Date;
+import com.piwko.booking.util.exception.ApplicationException;
+
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class DateTimeUtil {
 
     private DateTimeUtil() {}
 
-    public static Date getCurrentDate() {
-        return new Date(System.currentTimeMillis());
+    public static final String HOUR_PATTERN = "^([0-1][0-9]|[2][0-3]):([0-5][0-9])$";
+
+    public static final String HOUR_RANGE_PATTERN = "^([0-1][0-9]|[2][0-3]):([0-5][0-9])-([0-1][0-9]|[2][0-3]):([0-5][0-9])$";
+
+    public static LocalDateTime getCurrentDate() {
+        return LocalDateTime.now();
     }
 
-    public static Date endOfDay(Date date) {
-        if (date == null) {
-            return null;
+    public static LocalTime getLocalTime(String time) {
+        if (!time.matches(HOUR_PATTERN)) {
+            throw new ApplicationException("Time " + time + " does not match the regex: " + HOUR_PATTERN);
         }
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        calendar.set(Calendar.HOUR_OF_DAY, 0);
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.SECOND, 0);
-        calendar.set(Calendar.MILLISECOND, 0);
-        calendar.add(Calendar.DAY_OF_MONTH, 1);
-        calendar.add(Calendar.SECOND, -1);
-        return calendar.getTime();
-    }
-
-    public static Date addMonthsToDate(Date date, int months) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        calendar.add(Calendar.MONTH, months);
-        return calendar.getTime();
-    }
-
-    public static Date addDaysToDate(Date date, int days) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        calendar.add(Calendar.DAY_OF_YEAR, days);
-        return calendar.getTime();
+        return LocalTime.of(Integer.parseInt(time.split(":")[0]), Integer.parseInt(time.split(":")[1]));
     }
 }

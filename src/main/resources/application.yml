@@ -1,23 +1,29 @@
 server:
-  port: 8900
+  ssl:
+    key-password: bookingappssl
+    key-store-password: bookingappssl
+    key-store: classpath:keystore.jks
   servlet:
     context-path: /api
+  error:
+    include-message: always
 booking:
-  cache:
-    maxTimeToLive: 100
-    maxTimeToIdle: 100
-    memoryStorePolicy: LRU
-    maxEntries: 100
-    eternal: false
   page:
     number: 0
     size: 10
     sortBy: name
+  security:
+    tokenPrefix: Bearer
+    secretKey: nzZtxusf7MZ8wW3oNRV70nqXi98B6g5L
+    validity: 3600000
+    rememberMe: 14
+  scheduler:
+    confirmReservations:
+      cron: "0 0/1 * * * *"
+      partitionSize: 10000
 logging:
   file:
     name: logs/application.log
-    max-history: 10
-    max-size: 100MB
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
@@ -27,10 +33,10 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show-sql: false
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     open-in-view: false
-    generate-ddl: true
+    generate-ddl: false
   flyway:
-    enabled: false
+    baseline-on-migrate: true

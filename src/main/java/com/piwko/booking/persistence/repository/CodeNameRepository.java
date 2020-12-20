@@ -1,8 +1,19 @@
 package com.piwko.booking.persistence.repository;
 
-public interface CodeNameRepository {
+import com.piwko.booking.persistence.model.CodeNameEntity;
+import org.springframework.data.repository.NoRepositoryBean;
+
+import java.util.Optional;
+
+@NoRepositoryBean
+public interface CodeNameRepository<T extends CodeNameEntity> {
+
+    boolean existsByCode(String code);
 
     boolean existsByName(String name);
 
-    boolean existsByCode(String code);
+    Optional<T> findByCode(String code);
+
+    Optional<T> findByName(String name);
+
 }

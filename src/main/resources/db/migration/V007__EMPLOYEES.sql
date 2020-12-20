@@ -1,0 +1,25 @@
+CREATE TABLE EMPLOYEES(
+                          EMP_ID INT PRIMARY KEY NOT NULL,
+                          EMP_CODE VARCHAR(10) NOT NULL,
+                          EMP_FIRST_NAME VARCHAR(50) NOT NULL,
+                          EMP_LAST_NAME VARCHAR(50) NOT NULL,
+                          EMP_LOC_ID INT REFERENCES LOCATIONS (LOC_ID) NOT NULL,
+                          EMP_WRH_ID INT REFERENCES WORKING_HOURS (WRH_ID) NOT NULL,
+                          EMP_REMOVED BOOLEAN DEFAULT FALSE NOT NULL,
+                          CONSTRAINT EMP_CODE_UNIQUE UNIQUE (EMP_CODE)
+);
+
+COMMENT ON COLUMN EMPLOYEES.EMP_ID IS 'Employee ID (primary key)';
+COMMENT ON COLUMN EMPLOYEES.EMP_CODE IS 'Employee business code (unique)';
+COMMENT ON COLUMN EMPLOYEES.EMP_FIRST_NAME IS 'Employee first name';
+COMMENT ON COLUMN EMPLOYEES.EMP_LAST_NAME IS 'Employee last name';
+COMMENT ON COLUMN EMPLOYEES.EMP_LOC_ID IS 'Employee location (foreign key)';
+COMMENT ON COLUMN EMPLOYEES.EMP_WRH_ID IS 'Employee working hours (foreign key)';
+COMMENT ON COLUMN EMPLOYEES.EMP_REMOVED IS 'Employee soft delete';
+
+CREATE SEQUENCE EMP_SEQ
+    START WITH 1
+    INCREMENT BY 50
+    MINVALUE 1
+    MAXVALUE 100000000
+    CYCLE;

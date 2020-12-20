@@ -1,9 +1,12 @@
 package com.piwko.booking.api.form.get;
 
-import lombok.Data;
-import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+import java.util.Set;
+
+@Getter
+@Setter
 public class GetCompanyForm {
 
     private Long id;
@@ -12,7 +15,11 @@ public class GetCompanyForm {
 
     private String name;
 
-    private List<GetSpecializationForm> specializations;
+    private Integer cancellationTime;
 
-    private List<GetLocationForm> locations;
+    private Set<GetSpecializationForm> specializations;
+
+    private Set<String> locationCodes;
+
+    private Set<String> serviceCodes;
 }

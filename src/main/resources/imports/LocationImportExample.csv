@@ -1,0 +1,1 @@
+code(String),name(String),street(String),city(String),country(String),postalCode(String),phoneNumber(String),email(String)

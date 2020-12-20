@@ -27,4 +27,8 @@ public class StringUtil {
     public static boolean isEmpty(String string) {
         return (string == null || string.isEmpty());
     }
+
+    public static String getNullOrNonEmptyString(String s) {
+        return isEmpty(s) ? null : s;
+    }
 }

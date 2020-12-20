@@ -8,9 +8,7 @@ public class EntityFactory {
 
     private static final ConcurrentHashMap<Class<?>, EntityType> entityTypesMap = new ConcurrentHashMap<>();
 
-    private EntityFactory() {
-
-    }
+    private EntityFactory() {}
 
     public static <T> T newEntityInstance(Class<? extends T> entityClass) {
         try {
@@ -27,15 +25,6 @@ public class EntityFactory {
     @SuppressWarnings("unchecked")
     public static <T> Class<T> getEntityClass(Class<T> entityClass) {
         return (Class<T>) getEntityType(entityClass).getType();
-    }
-
-    @SuppressWarnings("unchecked")
-    public static <T> Class<T> getEntityClass(String className) {
-        try {
-            return (Class<T>) getEntityType(Class.forName(className)).getType();
-        } catch(ClassNotFoundException e) {
-            throw new ApplicationException("Invalid entity item class: " + className, e);
-        }
     }
 
     public static String getEntityName(Class<?> entityClass) {

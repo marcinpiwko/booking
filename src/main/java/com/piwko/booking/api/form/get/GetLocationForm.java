@@ -1,8 +1,10 @@
 package com.piwko.booking.api.form.get;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class GetLocationForm {
 
     private Long id;
@@ -11,6 +13,10 @@ public class GetLocationForm {
 
     private String name;
 
+    private String companyCode;
+
     private GetAddressForm address;
+
+    private GetWorkingHoursForm workingHours;
 }
 

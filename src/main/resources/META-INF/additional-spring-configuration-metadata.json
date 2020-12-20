@@ -19,29 +19,23 @@
       "defaultValue": "10"
     },
     {
-      "name": "booking.cache.maxEntries",
+      "name": "booking.security.secret",
       "type": "java.lang.String",
-      "description": "Sets the maximum objects to be held in local cache (0 = no limit).",
-      "defaultValue": "100"
+      "description": "Application secret key."
     },
     {
-      "name": "booking.cache.memoryStorePolicy",
+      "name": "booking.security.jwtValidity",
       "type": "java.lang.String",
-      "description": "Sets the eviction policy (LRU, LFU or FIFO). An invalid argument will set it to LRU."
+      "description": "JSON Web Token validity (in secs)."
     },
     {
-      "name": "booking.cache.maxTimeToIdle",
+      "name": "booking.scheduler.confirmReservations.cron",
       "type": "java.lang.String",
-      "description": "The maximum number of seconds an element can exist in the cache without being accessed (0 = no limit)."
+      "description": "ConfirmReservationsTask cron expression."
     },
     {
-      "name": "booking.cache.maxTimeToLive",
+      "name": "booking.scheduler.confirmReservations.partitionSize",
       "type": "java.lang.String",
-      "description": "The maximum number of seconds an element can exist in the cache regardless of use (0 = no limit)."
-    },
-    {
-      "name": "booking.cache.eternal",
-      "type": "java.lang.String",
-      "description": "If the cache’s eternal flag is set, it overrides any finite TTI/TTL values that have been set."
+      "description": "ConfirmReservationsTask partition size."
     }
   ] }

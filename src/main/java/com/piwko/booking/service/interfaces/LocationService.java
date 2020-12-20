@@ -1,20 +1,33 @@
 package com.piwko.booking.service.interfaces;
 
 import com.piwko.booking.persistence.model.Location;
+import com.piwko.booking.persistence.search.LocationSearchCriteria;
 import com.piwko.booking.util.exception.ResourceNotFoundException;
 import com.piwko.booking.util.exception.ResourceNotUniqueException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-public interface LocationService {
+import java.util.List;
+
+public interface LocationService extends AbstractCodeNameService, CacheService {
 
     Location getLocation(Long id) throws ResourceNotFoundException;
 
-    Page<Location> getLocations(Pageable pageable);
+    Location getLocation(String code) throws ResourceNotFoundException;
 
-    Long createLocation(Location company) throws ResourceNotUniqueException;
+    Location getLocationByCodeAndCompanyCode(String locationCode, String companyCode) throws ResourceNotFoundException;
 
-    void modifyLocation(Long id, Location company) throws ResourceNotUniqueException, ResourceNotFoundException;
+    Page<Location> getLocations(LocationSearchCriteria searchCriteria, Pageable pageable);
 
-    void deleteLocation(Long id);
+    Long createLocation(Location location) throws ResourceNotUniqueException;
+
+    void createLocations(List<Location> locations) throws ResourceNotUniqueException;
+
+    void updateLocation(Long id, Location location) throws ResourceNotFoundException, ResourceNotUniqueException;
+
+    void deleteLocation(Long id) throws ResourceNotFoundException;
+
+    boolean existsByCompany(String locationCode, String companyCode);
+
+    boolean existsByCompany(Long locationId, Long companyId);
 }
